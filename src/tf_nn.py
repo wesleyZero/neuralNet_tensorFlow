@@ -26,9 +26,10 @@ layer_output = layers.Dense(10, activation='softmax')
 nn_layers = [layer_input, layer_hidden_0, layer_output]
 nn_model = tf.keras.models.Sequential(nn_layers)
 
-nn_model.compile(optimizer='adam', loss='categorical_crossentropy')
+nn_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics='Accuracy')
 print(nn_model.summary())
 
+# Using one-hot again to make the dataset shapes consistent 
 one_hot_y_train = tf.one_hot(y_train, 10)
 nn_model.fit(x_train, one_hot_y_train)
 
